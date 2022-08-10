@@ -54,4 +54,27 @@ export class MoviesController {
 
     return res.json(savedMovies);
   }
+
+  async getMovies(req: Request, res: Response) {
+    const { page } = req.query;
+
+    if (page) {
+      const movies = await moviesRepository.find({
+        take: 10,
+        skip: (Number(page) - 1) * 10,
+      });
+
+      return res.json({
+        length: movies.length,
+        movies,
+      });
+    } else {
+      const movies = await moviesRepository.find();
+
+      return res.json({
+        length: movies.length,
+        movies,
+      });
+    }
+  }
 }
