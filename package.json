@@ -1,13 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "license": "MIT",
   "scripts": {
     "start:containers": "env $(cat .env.example) docker-compose up",
     "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "migration:generate": "typeorm-ts-node-commonjs -d ./src/db/connection.ts migration:generate ./src/migrations/default",
-    "migration:run": "typeorm-ts-node-commonjs -d ./dist/db/connection.js migration:run",
+    "migration:run": "typeorm-ts-node-commonjs -d ./src/db/connection.ts migration:run",
     "migration:revert": "typeorm-ts-node-commonjs -d ./src/db/connection.ts migration:revert"
   },
   "devDependencies": {
