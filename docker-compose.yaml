@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    container_name: api
+
+    volumes:
+      - ./backend:/usr/src/app
+
+    env_file:
+      - .env.example
+
+    ports:
+      - ${PORT}:${PORT}
+
+    command: yarn start:dev
+    restart: always
