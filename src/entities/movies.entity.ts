@@ -1,12 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity,  Column, PrimaryColumn } from "typeorm";
 
-@Entity("products")
-export class Product {
-  @PrimaryGeneratedColumn({
-    unsigned: true,
-    type: "int",
+@Entity("movies")
+export class Movie {
+  @PrimaryColumn({
+    type: "varchar",
   })
-  id: number;
+  id: string;
 
   @Column({ type: "varchar" })
   title: string;
@@ -16,6 +15,9 @@ export class Product {
 
   @Column({ type: "varchar" })
   description: string;
+
+  @Column({ type: "varchar" })
+  director: string;
 
   @Column({ type: "varchar" })
   producer: string;
