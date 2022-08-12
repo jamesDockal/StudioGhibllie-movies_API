@@ -77,4 +77,18 @@ export class MoviesController {
       });
     }
   }
+
+  async getMovie(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const movie = await moviesRepository.findOneBy({
+      id,
+    });
+
+    if (!movie) {
+      return res.send(404).json({ message: "Movie not found" });
+    }
+
+    return res.json(movie);
+  }
 }
